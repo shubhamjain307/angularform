@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import {Router,RouterModule,Routes} from '@angular/router';
+import { RecordsService } from '../records.service';
+
 @Component({
   selector: 'app-showdetail',
   templateUrl: './showdetail.component.html',
@@ -7,12 +9,13 @@ import {Router,RouterModule,Routes} from '@angular/router';
 })
 export class ShowdetailComponent implements OnInit {
   
-  Data;
+  value;
   show:string="password";
    
-  constructor(private route:Router) {
-    this.Data = JSON.parse(localStorage.getItem("data"));
-   
+  constructor(private route:Router,private data:RecordsService) {
+    //this.Data = JSON.parse(localStorage.getItem("data"));
+    this.value=JSON.parse(this.data.getData());
+      
     }
 
    editform(){
